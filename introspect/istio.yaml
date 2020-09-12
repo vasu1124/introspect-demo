@@ -2,9 +2,6 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   name: introspect-vs
-  namespace: default
-  labels:
-    app.kubernetes.io/instance: introspect
 spec:
   hosts:
   - "introspect.vasuhpi.actvirtual.com"
