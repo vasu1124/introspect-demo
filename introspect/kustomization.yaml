@@ -15,6 +15,7 @@ resources:
 - deployment.yaml
 - service.yaml
 - istio.yaml
+- hpa.yaml
 # - uselessmachine-1.yaml
 # - uselessmachine-2.yaml
 
