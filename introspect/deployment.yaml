@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: introspect
+  labels:
+    app: introspect
+    visualize: 'true'
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: introspect
+        visualize: 'true'
+      annotations:
+        traffic.sidecar.istio.io/excludeOutboundPorts: "443"
+    spec:
+      containers:
+      - image: vasu1124/introspect:v1.0
+    #    imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
+        name: introspect
+        env:
+        - name: OSENV_EXAMPLE
+          value: some_value
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        resources:
+          requests:
+            cpu: 50m
+          limits:
+            cpu: 500m
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 9090
+          initialDelaySeconds: 15
+          periodSeconds: 20
+          timeoutSeconds: 1
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /healthzr
+            port: 9090
+          initialDelaySeconds: 16
+          periodSeconds: 20
+          timeoutSeconds: 1
+          failureThreshold: 2
+        ports:
+        - name: introspect
+          containerPort: 9090
+        - name: debug
+          containerPort: 3000
+        volumeMounts:
+        - mountPath: /etc/secret
+          name: secret-volume
+          readOnly: true
+        - mountPath: /etc/config
+          name: config-volume
+      volumes:
+      - name: secret-volume
+        secret:
+          secretName: mongodb-secret
+      - name: config-volume
+        configMap:
+          name: introspect-config
