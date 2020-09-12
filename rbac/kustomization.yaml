@@ -1,9 +1,0 @@
-resources:
-- role.yaml
-- role_binding.yaml
-- leader_election_role.yaml
-- leader_election_role_binding.yaml
-
-# labels added to all Resources
-commonLabels:
-  app: introspect

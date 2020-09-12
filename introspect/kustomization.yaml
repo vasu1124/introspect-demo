@@ -6,7 +6,7 @@ namespace: demo
 bases:
 - ./crd/
 - ./rbac/
-- ../mongodb
+- ./mongodb
 
 # list of Resource Config to be Applied
 resources:
