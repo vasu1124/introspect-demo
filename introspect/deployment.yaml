@@ -36,16 +36,16 @@ spec:
           httpGet:
             path: /healthz
             port: 9090
-          initialDelaySeconds: 15
-          periodSeconds: 20
+          initialDelaySeconds: 5
+          periodSeconds: 60
           timeoutSeconds: 1
           failureThreshold: 3
         readinessProbe:
           httpGet:
             path: /healthzr
             port: 9090
-          initialDelaySeconds: 16
-          periodSeconds: 20
+          initialDelaySeconds: 6
+          periodSeconds: 60
           timeoutSeconds: 1
           failureThreshold: 2
         ports:
