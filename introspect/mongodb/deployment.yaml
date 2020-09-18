@@ -49,6 +49,7 @@ spec:
         - name: MONGODB_DATABASE
           value: guestbook
         image: bitnami/mongodb:latest
+#        imagePullPolicy: Always
         imagePullPolicy: IfNotPresent
         livenessProbe:
           exec:

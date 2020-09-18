@@ -17,8 +17,8 @@ spec:
     spec:
       containers:
       - image: vasu1124/introspect:v1.0
-    #    imagePullPolicy: IfNotPresent
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
+#        imagePullPolicy: Always
         name: introspect
         env:
         - name: OSENV_EXAMPLE
