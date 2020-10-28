@@ -16,10 +16,10 @@ spec:
   ingressClassName: istio
   tls:
   - hosts:
-    - introspect.vasuhpi.actvirtual.com
+    - introspect.vasu-test.otc.actvirtual.com
     secretName: wildcard-tls
   rules:
-  - host: introspect.vasuhpi.actvirtual.com
+  - host: introspect.vasu-test.otc.actvirtual.com
     http:
       paths:
       - path: /

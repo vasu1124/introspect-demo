@@ -4,9 +4,9 @@ metadata:
   name: introspect-vs
 spec:
   hosts:
-  - "introspect.vasuhpi.actvirtual.com"
+  - "introspect.vasu-test.otc.actvirtual.com"
   gateways:
-  - istio-system/actvirtual-gw
+  - istio-system/garden-gw
   http:
   - match:
     - uri:
