@@ -3,13 +3,11 @@ kind: Kustomization
 
 namespace: demo
 
-bases:
-- ./crd/
-- ./rbac/
-- ./mongodb
-
 # list of Resource Config to be Applied
 resources:
+- ./crd
+- ./rbac
+- ./mongodb
 - namespace.yaml
 - config.yaml
 - deployment.yaml
@@ -24,3 +22,26 @@ resources:
 # labels added to all Resources
 commonLabels:
   app: introspect
+
+patchesJson6902:
+- target:
+    group: networking.istio.io
+    version: v1beta1
+    kind: VirtualService
+    name: introspect-vs
+  patch: |-
+    - op: replace
+      path: /spec/hosts/0
+      value: "introspect.gaia-x-1.actvirtual.com"
+# - target:
+#     group: extensions
+#     version: v1beta1
+#     kind: Ingress
+#     name: introspect
+#   patch: |-
+#     - op: replace
+#       path: /spec/tls/0/hosts/0
+#       value: "introspect.gaia-x-1.actvirtual.com"
+#     - op: replace
+#       path: /spec/rules/0/host
+#       value: "introspect.gaia-x-1.actvirtual.com"
