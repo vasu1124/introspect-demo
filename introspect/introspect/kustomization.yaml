@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of Resource Config to be Applied
+resources:
+- config.yaml
+- deployment.yaml
+- service.yaml
+- introspect-tls.yaml
+- introspect-validatingwh.yaml
+- crd/
+- rbac/
+
+# - uselessmachine-1.yaml
+# - uselessmachine-2.yaml
+
+# labels added to all Resources
+commonLabels:
+  app: introspect

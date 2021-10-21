@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of Resource Config to be Applied
+resources:
+- ../mongodb
+- ../introspect
+- ../istio
+
+# namespace: test
+
+images:
+- name: vasu1124/introspect:v1.0
+  newName: vasu1124/introspect
+  newTag: "v1.0"
+- name: bitnami/mongodb:latest
+  newName: bitnami/mongodb
+  newTag: "4.2"

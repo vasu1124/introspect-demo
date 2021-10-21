@@ -6,7 +6,7 @@ metadata:
     app: introspect
     visualize: 'true'
 spec:
-#  replicas: 1
+  replicas: 1
   template:
     metadata:
       labels:
@@ -17,8 +17,8 @@ spec:
     spec:
       containers:
       - image: vasu1124/introspect:v1.0
-        imagePullPolicy: IfNotPresent
-#        imagePullPolicy: Always
+    #    imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: introspect
         env:
         - name: OSENV_EXAMPLE
@@ -36,26 +36,31 @@ spec:
           httpGet:
             path: /healthz
             port: 9090
-          initialDelaySeconds: 5
-          periodSeconds: 60
+          initialDelaySeconds: 15
+          periodSeconds: 20
           timeoutSeconds: 1
           failureThreshold: 3
         readinessProbe:
           httpGet:
             path: /healthzr
             port: 9090
-          initialDelaySeconds: 6
-          periodSeconds: 60
+          initialDelaySeconds: 16
+          periodSeconds: 20
           timeoutSeconds: 1
           failureThreshold: 2
         ports:
         - name: introspect
           containerPort: 9090
+        - name: introspect-s
+          containerPort: 9443
         - name: debug
           containerPort: 3000
         volumeMounts:
         - mountPath: /etc/secret
           name: secret-volume
+          readOnly: true
+        - mountPath: /etc/tls
+          name: tls-volume
           readOnly: true
         - mountPath: /etc/config
           name: config-volume
@@ -63,6 +68,9 @@ spec:
       - name: secret-volume
         secret:
           secretName: mongodb-secret
+      - name: tls-volume
+        secret:
+          secretName: introspect-tls
       - name: config-volume
         configMap:
           name: introspect-config
