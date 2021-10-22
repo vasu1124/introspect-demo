@@ -3,7 +3,6 @@ kind: Kustomization
 
 # list of Resource Config to be Applied
 resources:
-- namespaces.yaml
 - ./mongodb
 - ./introspect
 - ./istio
