@@ -9,6 +9,7 @@ resources:
 - deployment.yaml
 - service.yaml
 - secret.yaml
+- hpa.yaml
 - introspect-tls.yaml
 - introspect-validatingwh.yaml
 - VirtualService.yaml
