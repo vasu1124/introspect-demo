@@ -9,5 +9,4 @@ resources:
 - Base/Pilot/EgressGateways/EgressGateways.yaml
 - Base/Pilot/IngressGateways/IngressGateways.yaml
 - Gateway.yaml
-- VirtualService.yaml
 - IstioOperator.yaml

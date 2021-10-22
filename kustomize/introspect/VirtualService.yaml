@@ -2,7 +2,6 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   name: introspect-vs
-  namespace: default
 spec:
   hosts:
   - "introspect.bnerd4.actvirtual.com"
