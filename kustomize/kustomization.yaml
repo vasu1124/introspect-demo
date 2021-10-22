@@ -10,7 +10,7 @@ resources:
 images:
 - name: vasu1124/introspect:v1.0
   newName: vasu1124/introspect
-  newTag: "v2.0"
+  newTag: "v1.0"
 - name: bitnami/mongodb:latest
   newName: bitnami/mongodb
   newTag: "latest"
